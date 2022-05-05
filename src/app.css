@@ -1,0 +1,13 @@
+/* Write your global styles here, in PostCSS syntax */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+	background-color: hsl(210, 20%, 20%);
+	@apply select-none;
+}
+
+.sorta-button {
+	@apply bg-indigo-500 shadow-indigo-900 shadow rounded text-3xl font-light text-center;
+}

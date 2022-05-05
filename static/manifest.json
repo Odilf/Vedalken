@@ -1,0 +1,18 @@
+{
+    "short_name": "Vedalken",
+    "name": "Vedalken",
+    "start_url": "/",
+    "icons": [
+      {
+        "src": "logo.png",
+        "type": "image/png",
+        "sizes": "512x512"
+      }
+    ],
+    "background_color": "#29333D",
+    "display": "standalone",
+    "scope": "/",
+    "theme_color": "#000000",
+
+    "description": "MTG life counter"
+}
