@@ -12,7 +12,7 @@
     "background_color": "#29333D",
     "display": "standalone",
     "scope": "/",
-    "theme_color": "#000000",
+    "theme_color": "#29333D",
 
     "description": "MTG life counter"
 }
