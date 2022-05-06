@@ -2,21 +2,21 @@
 	import { scale } from "svelte/transition";
 	import { quintOut } from 'svelte/easing'
 	import { touch } from "./touch";
-	import { mod } from "./utils";
+	import { getOrientations } from "./utils/vectors";
 
 	export let count = 40
 	export let name = ''
 	export let color: { h: number, s: number, l: number }
 
 	export let rotation: number
-	$: horizontal = mod(rotation - 90, 360) === 0 || mod(rotation - 270, 360) === 0
-	$: vertical = !horizontal
+	$: ({ horizontal, vertical, flipped } = getOrientations(rotation))
 
 </script>
 
 <div class='w-full h-full flex {vertical && 'flex-col'} relative z-0'>
-	<div class='flex-1 transition-all duration-300 rounded-xl z-0' use:touch={{ classPrefix:'counter-' }} on:tap={ () => count += 1 } style:background-color='hsl({color.h}, {color.s}%, {color.l}%)'/>
-	<div class='flex-1 transition-all duration-300 rounded-xl z-0' use:touch={{ classPrefix:'counter-' }} on:tap={ () => count -= 1 } style:background-color='hsl({color.h}, {color.s}%, {color.l}%)'/>
+	<div class='flex-1 transition-all duration-300 rounded-xl z-0' use:touch={{ classPrefix:'counter-' }} on:tap={ () => count += flipped ? -1 : 1 } style:background-color='hsl({color.h}, {color.s}%, {color.l}%)'/>
+
+	<div class='flex-1 transition-all duration-300 rounded-xl z-0' use:touch={{ classPrefix:'counter-' }} on:tap={ () => count -= flipped ? -1 : 1 } style:background-color='hsl({color.h}, {color.s}%, {color.l}%)'/>
 
 	{#key count}
 		<div class='absolute w-full h-full flex justify-center items-center flex-col

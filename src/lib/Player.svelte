@@ -1,17 +1,14 @@
 <script lang="ts">
 	import Counter from "./Counter.svelte";	
 	import { touch } from "./touch";
-import { mod } from "./utils";
-import { initializePages } from "./utils/counters";
-	import { getRotatedDirection } from "./utils/vectors";
+	import { initializePages } from "./utils/counters";
+	import { getOrientations, getRotatedDirection } from "./utils/vectors";
 	
 	export let rotation = 0
 	export let index: number
 	export let playerNumber: number
 
-	$: horizontal = mod(rotation - 90, 360) === 0 || mod(rotation - 270, 360) === 0
-	$: vertical = !horizontal
-	$: flipped = mod(rotation, 360) >= 180
+	$: ({ horizontal, vertical, flipped } = getOrientations(rotation))
 
 	$: color = { h: index / playerNumber * 360, s: 64, l: 32 }
 	
@@ -42,13 +39,13 @@ import { initializePages } from "./utils/counters";
 style:background-color='hsl({color.h}, {color.s}%, {color.l}%)'>
 
 	{#each pages as page, i}
-
 		<div class='absolute inset-0 transition-all ease-in-out duration-300 elastic 
 		{i === selectedIndex || 'pointer-events-none'}'
 		style:transform='translate{vertical ? 'X' : 'Y'}({page.offset * (flipped ? -1 : 1)}%) '>
-			<Counter bind:count={page.count} name={page.name} {color} {rotation}/>
-		</div>
 
+			<Counter bind:count={page.count} name={page.name} {color} {rotation}/>
+
+		</div>
 	{/each}
 
 </div>
