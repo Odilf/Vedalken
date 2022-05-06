@@ -14,9 +14,9 @@
 </script>
 
 <div class='w-full h-full flex {vertical && 'flex-col'} relative z-0'>
-	<div class='flex-1 transition-all duration-300 rounded-xl z-0' use:touch={{ classPrefix:'counter-' }} on:tap={ () => count += flipped ? -1 : 1 } style:background-color='hsl({color.h}, {color.s}%, {color.l}%)'/>
+	<div class='flex-1 transition-all duration-300 rounded-xl z-0' use:touch on:click={ () => count += flipped ? -1 : 1 } style:background-color='hsl({color.h}, {color.s}%, {color.l}%)'/>
 
-	<div class='flex-1 transition-all duration-300 rounded-xl z-0' use:touch={{ classPrefix:'counter-' }} on:tap={ () => count -= flipped ? -1 : 1 } style:background-color='hsl({color.h}, {color.s}%, {color.l}%)'/>
+	<div class='flex-1 transition-all duration-300 rounded-xl z-0' use:touch on:click={ () => count -= flipped ? -1 : 1 } style:background-color='hsl({color.h}, {color.s}%, {color.l}%)'/>
 
 	{#key count}
 		<div class='absolute w-full h-full flex justify-center items-center flex-col
@@ -32,10 +32,3 @@
 		</div>
 	{/key}
 </div>
-
-<style global lang='postcss'>
-	.counter-tapped {
-		filter: brightness(80%);
-		@apply duration-75;
-	}
-</style>
