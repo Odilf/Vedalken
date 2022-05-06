@@ -44,3 +44,13 @@ export function getRotatedDirection(direction: Direction, rotation: number) {
 	
 	return directions[index]
 }
+
+export function getOrientations(rotation: number) {
+	const horizontal = mod(rotation - 90, 360) === 0 || mod(rotation - 270, 360) === 0
+	const vertical = !horizontal
+	const flipped = mod(rotation, 360) >= 180
+
+	return {
+		horizontal, vertical, flipped
+	}
+}
