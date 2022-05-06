@@ -11,3 +11,11 @@ html {
 .sorta-button {
 	@apply bg-indigo-500 shadow-indigo-900 shadow rounded text-3xl font-light text-center;
 }
+
+.tapped {
+	@apply duration-75 brightness-75;
+}
+
+.untapped {
+	@apply duration-300;
+}
