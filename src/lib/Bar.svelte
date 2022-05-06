@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { fade } from "svelte/transition";
+	import { touch } from "./touch";
 	let showMenu = false
 
 	export let hideButton = false
@@ -8,7 +9,7 @@
 <div class='h-2 min-w-[0.5rem] z-10 overflow-visible flex justify-center items-center relative' >
 	{#if !hideButton}
 		<svg class='h-16 active:scale-105 active:brightness-90 transition' xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox='-10 -10 310 310' xmlns:xlink="http://www.w3.org/1999/xlink"
-		stroke='black' stroke-width=30 stroke-linejoin='round' stroke-linecap='round'
+		stroke='black' stroke-width=30 stroke-linejoin='round' stroke-linecap='round' use:touch
 		on:click={() => showMenu = true}>
 			<polygon points="300,150 225,280 75,280 0,150 75,20 225,20"
 			fill='white'

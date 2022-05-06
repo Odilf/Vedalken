@@ -1,6 +1,6 @@
 import { getDisplacement, getTouchPosition, getModulusSqr, type Vector, getDominantDirection } from "$lib/utils/vectors";
 
-export function touch(node: HTMLElement, options: {
+export function touch(node: HTMLElement | SVGElement, options: {
 	tapLength?: number
 	dragThreshold?: number
 	classPrefix?: string
@@ -84,7 +84,7 @@ export function touch(node: HTMLElement, options: {
 
 // WARNING: THIS MIGHT GET OUTDATED. 
 // I cant be bothered enough to make a nice solution, this is unnecessary anyway. 
-function touchDesktopPolyfill(node: HTMLElement, options: {
+function touchDesktopPolyfill(node: HTMLElement | SVGElement, options: {
 	tapLength?: number
 	dragThreshold?: number
 	classPrefix?: string
