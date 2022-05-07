@@ -1,8 +1,23 @@
 <script>
+	import Menu from "$lib/Menu.svelte";
 	import { touch } from "$lib/touch";
+	import Play from "./play/index.svelte";
+
 </script>
 
-<h1 class='text-6xl font-thin mb-10'> Vedalken </h1>
-<a class='text-4xl p-4 m-2 bg-blue-700 rounded shadow font-black' href="/play" use:touch sveltekit:prefetch> Play! </a>
 
-<a href="/about"> About </a>
+
+<Menu options={[
+	{
+		name: 'Play!',
+		component: Play,
+	},
+	{
+		name: 'Options',
+		component: null,
+	}
+]}>
+	<h1 class='text-6xl font-thin mb-4' slot='header'> Vedalken </h1>
+
+	<a href="/about" slot='footer' class='mt-4 text-xl' use:touch> About </a>
+</Menu>
